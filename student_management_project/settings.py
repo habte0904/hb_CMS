@@ -39,13 +39,7 @@ STATIC_URL="/static/"
 STATIC_ROOT=os.path.join(BASE_DIR,"static")
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # or any other directory you prefer
-STATICFILES_STORAGE ="whitenoise.storage.CompressedManifestStaticFilesStorage"
-# STORAGES = {
-#     # ...
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
+
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
@@ -108,6 +102,14 @@ DATABASES = {
         # 'HOST':'localhost',
         # 'PORT':'3306'
     }
+}
+
+# STATICFILES_STORAGE ="whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 # database_url = os.environ.get("DATABASE_URL")
