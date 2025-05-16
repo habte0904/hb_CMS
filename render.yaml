@@ -1,0 +1,23 @@
+version: 1
+services:
+  - type: web
+    name: InventoryMS
+    env: python
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: gunicorn --bind 0.0.0.0:10000 InventoryMS.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "*"
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "habtesh"
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "petrosh122@gmail.com"
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: "habtesh"
+      - key: CREATE_SUPERUSER
+        value: "True"
+    autoDeploy: true
+    region: oregon
